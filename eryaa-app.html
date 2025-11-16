@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ERYAA Mobile App – Prototype</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0f172a; }
+    .app-shell {
+      background: linear-gradient(180deg, #e5f2ff, #f8fafc);
+      border-radius: 32px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.55);
+    }
+    .nav-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 flex items-center justify-center min-h-screen px-4">
+
+  <!-- PHONE FRAME -->
+  <div class="app-shell w-full max-w-sm h-[720px] flex flex-col overflow-hidden border border-slate-200">
+    <!-- STATUS BAR -->
+    <div class="flex items-center justify-between px-4 pt-3 pb-1 text-xs text-slate-500">
+      <span>9:41</span>
+      <div class="flex items-center gap-1">
+        <span>5G</span>
+        <span class="w-4 h-2 bg-slate-400 rounded"></span>
+      </div>
+    </div>
+
+    <!-- TOP BAR -->
+    <header class="px-4 pb-3 flex items-center justify-between border-b border-slate-200 bg-white/90">
+      <div class="flex items-center gap-3">
+        <!-- App icon (replace src with your basketball icon later) -->
+        <div class="w-9 h-9 rounded-full bg-slate-900 flex items-center justify-center">
+          🏀
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wide text-sky-600 font-semibold">
+            East River Youth Athletic Association
+          </div>
+          <div class="text-sm font-semibold text-slate-900">
+            ERYAA Basketball • Grades 1–5
+          </div>
+        </div>
+      </div>
+      <button class="text-xs px-2 py-1 rounded-full bg-sky-100 text-sky-700 font-semibold">
+        Winter 2025
+      </button>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="app-main" class="flex-1 overflow-y-auto bg-slate-50">
+      <!-- HOME VIEW -->
+      <section id="view-home" class="px-4 py-4 space-y-4">
+        <div class="bg-gradient-to-r from-sky-700 to-cyan-500 rounded-2xl p-4 text-white">
+          <h2 class="text-lg font-semibold">Welcome back, Parent!</h2>
+          <p class="text-xs text-sky-100 mt-1">
+            You’re registered for East River Youth Athletic Association. Tap **Register** to add another player, or check **Schedule** for this week’s games and practices.
+          </p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <button class="flex-1 bg-white/10 backdrop-blur rounded-full py-2 font-semibold border border-white/40">
+              View this week
+            </button>
+            <button class="flex-1 bg-white text-sky-900 rounded-full py-2 font-semibold">
+              Register another player
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick tiles -->
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <div class="font-semibold text-slate-800">Next Event</div>
+            <div class="mt-1 text-slate-500">Sat • 10:00 AM</div>
+            <div class="mt-1 text-[11px]">3rd Grade • Game vs Cougars @ Lincoln Elem.</div>
+            <button class="mt-2 w-full text-[11px] rounded-full bg-sky-600 text-white py-1">
+              Game-day details
+            </button>
+          </div>
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <div class="font-semibold text-slate-800">Notifications</div>
+            <p class="mt-1 text-slate-500 text-[11px]">
+              Weather + schedule changes go here. You’re all up to date.
+            </p>
+            <button class="mt-2 w-full text-[11px] rounded-full bg-slate-900 text-white py-1">
+              Notification settings
+            </button>
+          </div>
+        </div>
+
+        <!-- Announcements -->
+        <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 text-xs space-y-2">
+          <div class="font-semibold text-slate-800">League announcements</div>
+          <div class="flex gap-2 items-start">
+            <span class="mt-[3px] w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+            <p class="text-slate-600 text-[11px]">
+              Skills Clinic: Tuesday, 6:00–7:00 PM at Sanford Pentagon Fieldhouse – limited spots.
+            </p>
+          </div>
+          <div class="flex gap-2 items-start">
+            <span class="mt-[3px] w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+            <p class="text-slate-600 text-[11px]">
+              Reminder: arrive 10 minutes before games for digital check-in.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGISTRATION VIEW -->
+      <section id="view-register" class="hidden px-4 py-4 space-y-3 text-xs">
+        <h2 class="text-sm font-semibold text-slate-900">Register a Player</h2>
+        <p class="text-[11px] text-slate-500">
+          Complete this form to register your player for the upcoming ERYAA winter season.
+        </p>
+
+        <form class="space-y-4">
+          <!-- Parent info -->
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 space-y-2">
+            <div class="font-semibold text-slate-800 text-xs">Parent / Guardian</div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500">First name</label>
+                <input type="text" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500">Last name</label>
+                <input type="text" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500">Email</label>
+              <input type="email" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500">Mobile phone</label>
+              <input type="tel" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+            </div>
+          </div>
+
+          <!-- Player info -->
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 space-y-2">
+            <div class="font-semibold text-slate-800 text-xs">Player</div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500">First name</label>
+                <input type="text" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500">Last name</label>
+                <input type="text" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[11px] text-slate-500">Grade</label>
+                <select class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs">
+                  <option>1st Grade</option>
+                  <option>2nd Grade</option>
+                  <option>3rd Grade</option>
+                  <option>4th Grade</option>
+                  <option>5th Grade</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] text-slate-500">Jersey size</label>
+                <select class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs">
+                  <option>YS</option>
+                  <option>YM</option>
+                  <option>YL</option>
+                  <option>AS</option>
+                  <option>AM</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] text-slate-500">Preferred school or site</label>
+              <select class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs">
+                <option>Closest available site</option>
+                <option>Sioux Falls – Lincoln Elementary</option>
+                <option>Sioux Falls – Washington High Aux Gym</option>
+                <option>Tea – Elementary Gym</option>
+                <option>Harrisburg – North Middle Gym</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] text-slate-500">Any medical notes or allergies</label>
+              <textarea rows="2" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs"></textarea>
+            </div>
+          </div>
+
+          <!-- Emergency & consent -->
+          <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 space-y-2">
+            <div class="font-semibold text-slate-800 text-xs">Emergency & Consents</div>
+            <div>
+              <label class="block text-[11px] text-slate-500">Emergency contact name</label>
+              <input type="text" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-500">Emergency contact phone</label>
+              <input type="tel" class="mt-1 w-full px-2 py-1.5 rounded border border-slate-200 text-xs" />
+            </div>
+            <label class="flex items-start gap-2 mt-1">
+              <input type="checkbox" class="mt-[2px]" />
+              <span class="text-[11px] text-slate-600">
+                I agree to the ERYAA waiver, code of conduct, and concussion protocol.
+              </span>
+            </label>
+            <label class="flex items-start gap-2">
+              <input type="checkbox" class="mt-[2px]" />
+              <span class="text-[11px] text-slate-600">
+                I consent to photos/videos of my child being used in league materials.
+              </span>
+            </label>
+          </div>
+
+          <button type="button"
+            class="w-full py-2.5 text-xs font-semibold rounded-full bg-sky-700 text-white shadow">
+            Complete Registration (Mock)
+          </button>
+          <p class="text-[10px] text-center text-slate-500">
+            This is a prototype. Hook this button to your backend or registration platform.
+          </p>
+        </form>
+      </section>
+
+      <!-- SCHEDULE VIEW -->
+      <section id="view-schedule" class="hidden px-4 py-4 space-y-3 text-xs">
+        <h2 class="text-sm font-semibold text-slate-900">Schedule</h2>
+        <p class="text-[11px] text-slate-500">
+          All practices and games for your players. Tap a card for full details or to check in.
+        </p>
+
+        <!-- Upcoming events -->
+        <div class="space-y-3">
+          <!-- Practice card -->
+          <article class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center">
+              <div>
+                <div class="font-semibold text-slate-800">Practice • 3rd Grade Wolves</div>
+                <div class="text-[11px] text-slate-500">Tue, Jan 14 • 6:00–7:00 PM</div>
+                <div class="text-[11px] text-slate-500">Tea Elementary – Main Gym</div>
+              </div>
+              <button class="ml-3 text-[10px] px-2 py-1 rounded-full bg-slate-900 text-white">
+                Add to calendar
+              </button>
+            </div>
+            <div class="mt-2 flex justify-between items-center">
+              <div class="text-[11px] text-slate-500">
+                Coach: Morgan • Focus: ball-handling + passing
+              </div>
+              <button class="text-[10px] px-2 py-1 rounded-full bg-sky-600 text-white">
+                Directions
+              </button>
+            </div>
+          </article>
+
+          <!-- Game card -->
+          <article class="bg-white rounded-xl p-3 shadow-sm border border-slate-100">
+            <div class="flex justify-between items-center">
+              <div>
+                <div class="font-semibold text-slate-800">Game vs Cougars</div>
+                <div class="text-[11px] text-slate-500">Sat, Jan 18 • 10:00 AM</div>
+                <div class="text-[11px] text-slate-500">Sanford Pentagon – Court 3</div>
+              </div>
+              <button class="ml-3 text-[10px] px-2 py-1 rounded-full bg-emerald-500 text-white">
+                Check-in
+              </button>
+            </div>
+            <div class="mt-2 flex justify-between items-center">
+              <div class="text-[11px] text-slate-500">
+                Arrive 15 minutes early for warm-up and check-in.
+              </div>
+              <button class="text-[10px] px-2 py-1 rounded-full bg-sky-600 text-white">
+                Game details
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TEAM VIEW -->
+      <section id="view-team" class="hidden px-4 py-4 space-y-3 text-xs">
+        <h2 class="text-sm font-semibold text-slate-900">Your Team • 3rd Grade Wolves</h2>
+        <p class="text-[11px] text-slate-500">
+          Roster, coach info, and practice location for this season.
+        </p>
+
+        <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 space-y-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <div class="text-xs font-semibold text-slate-800">Head Coach</div>
+              <div class="text-[11px] text-slate-600">Morgan Lee</div>
+              <div class="text-[11px] text-slate-500">Text: (555) 123-4567</div>
+            </div>
+            <button class="text-[10px] px-2 py-1 rounded-full bg-sky-600 text-white">
+              Message coach
+            </button>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold text-slate-800 mb-1">Roster</div>
+            <ul class="divide-y divide-slate-100">
+              <li class="py-1.5 flex justify-between">
+                <span>12 • Jordan S.</span>
+                <span class="text-[11px] text-slate-500">Guard</span>
+              </li>
+              <li class="py-1.5 flex justify-between">
+                <span>4 • Ava R.</span>
+                <span class="text-[11px] text-slate-500">Guard</span>
+              </li>
+              <li class="py-1.5 flex justify-between">
+                <span>22 • Liam T.</span>
+                <span class="text-[11px] text-slate-500">Forward</span>
+              </li>
+              <li class="py-1.5 flex justify-between">
+                <span>30 • Noah P.</span>
+                <span class="text-[11px] text-slate-500">Forward</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold text-slate-800 mb-1">Practice location</div>
+            <div class="text-[11px] text-slate-600">
+              Tea Elementary – Main Gym<br />
+              300 W Maple St, Tea, SD
+            </div>
+            <button class="mt-2 text-[10px] px-2 py-1 rounded-full bg-sky-600 text-white">
+              Open in Maps
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGES VIEW -->
+      <section id="view-messages" class="hidden px-4 py-4 space-y-3 text-xs">
+        <h2 class="text-sm font-semibold text-slate-900">Messages</h2>
+        <p class="text-[11px] text-slate-500">
+          Team chat and announcements. Use this to coordinate snacks, rides, and game-day details.
+        </p>
+
+        <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 flex flex-col h-[420px]">
+          <!-- Chat bubbles -->
+          <div class="flex-1 space-y-2 overflow-y-auto pr-1 text-[11px]">
+            <div class="flex justify-start">
+              <div class="max-w-[75%] bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2">
+                <div class="font-semibold text-slate-800 text-[10px] mb-[2px]">Coach Morgan</div>
+                Please be at Saturday’s game by 9:45 AM so we can warm up together.
+              </div>
+            </div>
+            <div class="flex justify-end">
+              <div class="max-w-[75%] bg-sky-600 text-white rounded-2xl rounded-tr-sm px-3 py-2">
+                Got it! We’ll be there early.
+              </div>
+            </div>
+            <div class="flex justify-start">
+              <div class="max-w-[75%] bg-slate-100 rounded-2xl rounded-tl-sm px-3 py-2">
+                <div class="font-semibold text-slate-800 text-[10px] mb-[2px]">Parent – Ava</div>
+                I can bring oranges and granola bars for the team.
+              </div>
+            </div>
+          </div>
+
+          <!-- Input -->
+          <div class="pt-2 mt-2 border-t border-slate-100 flex items-center gap-2">
+            <input
+              type="text"
+              placeholder="Send a message to the team..."
+              class="flex-1 px-3 py-1.5 rounded-full border border-slate-200 text-[11px]" />
+            <button class="px-3 py-1.5 rounded-full bg-sky-600 text-white text-[11px] font-semibold">
+              Send
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE VIEW -->
+      <section id="view-profile" class="hidden px-4 py-4 space-y-3 text-xs">
+        <h2 class="text-sm font-semibold text-slate-900">Account & Family</h2>
+
+        <div class="bg-white rounded-xl p-3 shadow-sm border border-slate-100 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-semibold">
+              TS
+            </div>
+            <div>
+              <div class="text-xs font-semibold">Tyler Soria</div>
+              <div class="text-[11px] text-slate-500">tyler@example.com</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold mb-1">Players</div>
+            <ul class="space-y-1.5 text-[11px]">
+              <li class="flex justify-between">
+                <span>Jordan S. — 3rd Grade • Wolves</span>
+                <button class="text-sky-600 font-semibold">Details</button>
+              </li>
+              <li class="flex justify-between">
+                <span>Add another player</span>
+                <button class="text-sky-600 font-semibold">Register</button>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold mb-1">Notifications</div>
+            <label class="flex justify-between items-center text-[11px] py-1">
+              <span>Game & practice reminders</span>
+              <input type="checkbox" checked class="accent-sky-600" />
+            </label>
+            <label class="flex justify-between items-center text-[11px] py-1">
+              <span>Weather & cancellations</span>
+              <input type="checkbox" checked class="accent-sky-600" />
+            </label>
+            <label class="flex justify-between items-center text-[11px] py-1">
+              <span>Marketing & clinics</span>
+              <input type="checkbox" class="accent-sky-600" />
+            </label>
+          </div>
+
+          <div>
+            <div class="text-xs font-semibold mb-1">Season & billing</div>
+            <p class="text-[11px] text-slate-500">
+              Winter 2025 • Paid • Receipt sent to tyler@example.com
+            </p>
+            <button class="mt-2 text-[10px] px-2 py-1 rounded-full bg-slate-900 text-white">
+              View invoices
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- BOTTOM NAV BAR -->
+    <nav class="bg-white border-t border-slate-200">
+      <div class="flex items-center justify-around text-[10px] py-1.5">
+        <button data-view="home" class="nav-btn flex flex-col items-center text-sky-700">
+          <span class="nav-icon">🏠</span>
+          <span>Home</span>
+        </button>
+        <button data-view="register" class="nav-btn flex flex-col items-center text-slate-500">
+          <span class="nav-icon">📝</span>
+          <span>Register</span>
+        </button>
+        <button data-view="schedule" class="nav-btn flex flex-col items-center text-slate-500">
+          <span class="nav-icon">📅</span>
+          <span>Schedule</span>
+        </button>
+        <button data-view="team" class="nav-btn flex flex-col items-center text-slate-500">
+          <span class="nav-icon">👥</span>
+          <span>Team</span>
+        </button>
+        <button data-view="messages" class="nav-btn flex flex-col items-center text-slate-500">
+          <span class="nav-icon">💬</span>
+          <span>Messages</span>
+        </button>
+        <button data-view="profile" class="nav-btn flex flex-col items-center text-slate-500">
+          <span class="nav-icon">⚙️</span>
+          <span>Profile</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- SIMPLE VIEW SWITCHING SCRIPT -->
+  <script>
+    const views = {
+      home: document.getElementById("view-home"),
+      register: document.getElementById("view-register"),
+      schedule: document.getElementById("view-schedule"),
+      team: document.getElementById("view-team"),
+      messages: document.getElementById("view-messages"),
+      profile: document.getElementById("view-profile"),
+    };
+
+    const navButtons = document.querySelectorAll(".nav-btn");
+
+    function showView(name) {
+      Object.entries(views).forEach(([key, el]) => {
+        if (!el) return;
+        if (key === name) {
+          el.classList.remove("hidden");
+        } else {
+          el.classList.add("hidden");
+        }
+      });
+
+      navButtons.forEach(btn => {
+        if (btn.dataset.view === name) {
+          btn.classList.remove("text-slate-500");
+          btn.classList.add("text-sky-700");
+        } else {
+          btn.classList.remove("text-sky-700");
+          btn.classList.add("text-slate-500");
+        }
+      });
+    }
+
+    navButtons.forEach(btn => {
+      btn.addEventListener("click", () => showView(btn.dataset.view));
+    });
+
+    // Default view
+    showView("home");
+  </script>
+</body>
+</html>
